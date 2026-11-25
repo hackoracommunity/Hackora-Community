@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Code2, Compass, GraduationCap, Instagram, Menu, Orbit, Rocket, Sparkles, Users, X, Zap, BookOpen, Trophy, Handshake, Globe2 } from "lucide-react";
+import { AnimatePresence, motion, useReducedMotion, type Variants } from "motion/react";
+import { ArrowDownRight, ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Code2, GraduationCap, Instagram, Menu, Orbit, Rocket, Users, X, BookOpen, Trophy } from "lucide-react";
 
 const JOIN = "https://chat.whatsapp.com/L4xEzghMKsR8wmcYLSj4mo";
 const INSTAGRAM = "https://www.instagram.com/hackoracommunity/";
@@ -43,7 +43,12 @@ function OrbitalArt() {
 
 function Countdown() {
   const [now, setNow] = useState<number | null>(null);
-  useEffect(() => { setNow(Date.now()); const timer = window.setInterval(() => setNow(Date.now()), 1000); return () => window.clearInterval(timer); }, []);
+  useEffect(() => {
+    const updateNow = () => setNow(Date.now());
+    const initialUpdate = window.setTimeout(updateNow, 0);
+    const timer = window.setInterval(updateNow, 1000);
+    return () => { window.clearTimeout(initialUpdate); window.clearInterval(timer); };
+  }, []);
   if (now === null) return <div className="countdown" aria-label="Countdown loading"><div><strong>—</strong><span>DAYS</span></div><div><strong>—</strong><span>HOURS</span></div><div><strong>—</strong><span>MINUTES</span><div></div></div><div><strong>—</strong><span>SECONDS</span></div></div>;
   const diff = launchAt - now;
   if (diff <= 0) return <div className="launch-live"><span className="live-pulse" /> HACKORA IS LIVE. LET’S BUILD.</div>;
@@ -56,7 +61,7 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
   const reduce = useReducedMotion();
   useEffect(() => { const onScroll = () => setScrolled(window.scrollY > 24); window.addEventListener("scroll", onScroll, { passive: true }); return () => window.removeEventListener("scroll", onScroll); }, []);
-  const intro = { hidden: { opacity: 0, y: reduce ? 0 : 24 }, show: { opacity: 1, y: 0, transition: { duration: reduce ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1] } } };
+  const intro: Variants = { hidden: { opacity: 0, y: reduce ? 0 : 24 }, show: { opacity: 1, y: 0, transition: { duration: reduce ? 0.2 : 0.8, ease: [0.22, 1, 0.36, 1] } } };
 
   return <main id="home" className="site-shell">
     <div className="ambient-grid" aria-hidden="true" /><div className="grain" aria-hidden="true" />
@@ -137,7 +142,7 @@ export default function Home() {
     <section className="people section-wrap">
       <Reveal className="section-kicker"><span>04 / YOUR PEOPLE</span><span className="kicker-line" /><span>WHO CAN JOIN?</span></Reveal>
       <div className="people-layout"><Reveal className="people-copy"><h2 className="section-heading">Your background<br />doesn’t matter.<br /><em>Your curiosity does.</em></h2><p>There’s no perfect starting point. Bring your questions, your ideas, and the willingness to try.</p><ul className="audience-list">{audience.map((a, i) => <li key={a}><span>0{i + 1}</span>{a}<ArrowUpRight size={14} /></li>)}</ul></Reveal>
-        <Reveal className="people-art" delay={0.15}><div className="people-art-grid" /><div className="people-orbit orbit-p1" /><div className="people-orbit orbit-p2" /><div className="people-orbit orbit-p3" /><div className="people-center"><span>H</span><small>YOU BELONG<br />IN THE BUILD</small></div><div className="people-node node-a"><Code2 size={18} /></div><div className="people-node node-b"><BrainCircuit size={18} /></div><div className="people-node node-c"><GraduationCap size={18} /></div><div className="people-node node-d"><Rocket size={18} /></div><span className="people-coordinate">28°37' N<br />77°13' E</span><span className="people-art-caption">A NETWORK<br />OF POSSIBILITY</span></Reveal></div>
+        <Reveal className="people-art" delay={0.15}><div className="people-art-grid" /><div className="people-orbit orbit-p1" /><div className="people-orbit orbit-p2" /><div className="people-orbit orbit-p3" /><div className="people-center"><span>H</span><small>YOU BELONG<br />IN THE BUILD</small></div><div className="people-node node-a"><Code2 size={18} /></div><div className="people-node node-b"><BrainCircuit size={18} /></div><div className="people-node node-c"><GraduationCap size={18} /></div><div className="people-node node-d"><Rocket size={18} /></div><span className="people-coordinate">28°37&apos; N<br />77°13&apos; E</span><span className="people-art-caption">A NETWORK<br />OF POSSIBILITY</span></Reveal></div>
     </section>
 
     <section className="launch-section section-wrap" id="join">
