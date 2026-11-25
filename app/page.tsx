@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Code2, Compass, GraduationCap, Menu, Orbit, Rocket, Sparkles, Users, X, Zap, BookOpen, Trophy, Handshake, Globe2 } from "lucide-react";
+import { ArrowDown, ArrowDownRight, ArrowRight, ArrowUpRight, BrainCircuit, BriefcaseBusiness, Code2, Compass, GraduationCap, Instagram, Menu, Orbit, Rocket, Sparkles, Users, X, Zap, BookOpen, Trophy, Handshake, Globe2 } from "lucide-react";
 
 const JOIN = "https://chat.whatsapp.com/L4xEzghMKsR8wmcYLSj4mo";
+const INSTAGRAM = "https://www.instagram.com/hackoracommunity/";
 const launchAt = new Date("2026-12-01T00:00:00+05:30").getTime();
 const navItems = [{ label: "Home", href: "#home" }, { label: "About", href: "#about" }, { label: "Features", href: "#features" }, { label: "Mission", href: "#mission" }, { label: "Join Us", href: "#join" }];
 const features = [
@@ -83,6 +84,38 @@ export default function Home() {
       <div className="hero-bottomline"><span>SCROLL TO EXPLORE</span><span className="scroll-line"><i /></span><span>EST. 2026 / INTERNET-NATIVE</span></div>
     </section>
 
+    <section className="social-feature section-wrap" aria-labelledby="social-title">
+      <Reveal className="social-card">
+        <div className="social-poster">
+          <div className="poster-orbit poster-orbit-a" /><div className="poster-orbit poster-orbit-b" /><div className="poster-star poster-star-a">✳</div><div className="poster-star poster-star-b">✦</div>
+          <span className="poster-welcome">WELCOME TO</span>
+          <div className="poster-emblem"><Orbit size={120} strokeWidth={0.8} /><span>H</span></div>
+          <span className="poster-brand">HACKORA</span>
+          <h2 id="social-title" className="poster-heading">“WE BUILD<br />THE FUTURE”</h2>
+          <p className="poster-script">from localhost to the universe</p>
+          <div className="poster-divider"><span>✳</span> ONE BOLD LINE AT A TIME. <span>✳</span></div>
+          <span className="poster-system">SYSTEM ONLINE.</span>
+        </div>
+        <div className="instagram-panel">
+          <div className="instagram-profile">
+            <a className="instagram-avatar" href={INSTAGRAM} target="_blank" rel="noreferrer" aria-label="HACKORA on Instagram"><span>H</span></a>
+            <div className="instagram-profile-copy"><a href={INSTAGRAM} target="_blank" rel="noreferrer"><strong>hackoracommunity</strong></a><span>Official HACKORA community</span></div>
+            <Instagram size={19} aria-hidden="true" />
+          </div>
+          <div className="instagram-caption">
+            <p><strong>hackoracommunity</strong> 🚀 WELCOME TO HACKORA!</p>
+            <p>We build the future — from localhost to the universe. 🌐</p>
+            <p>A space where curiosity turns into capability, ideas become real projects, and passionate minds grow together.</p>
+            <p>Learn, experiment, innovate, and create solutions that make a difference. Your next chapter starts here.</p>
+          </div>
+          <div className="instagram-panel-footer">
+            <span>FIND YOUR PEOPLE. BUILD WHAT’S NEXT.</span>
+            <a className="instagram-link" href={INSTAGRAM} target="_blank" rel="noreferrer">Visit Instagram <ArrowUpRight size={16} /></a>
+          </div>
+        </div>
+      </Reveal>
+    </section>
+
     <section className="about section-wrap" id="about">
       <Reveal className="section-kicker"><span>01 / ABOUT HACKORA</span><span className="kicker-line" /><span>WHO WE ARE</span></Reveal>
       <div className="about-grid"><Reveal><h2 className="section-heading">More Than a<br />Community.<br /><em>A Place to Build.</em></h2></Reveal><Reveal delay={0.12} className="about-copy"><p>HACKORA is a growing tech and innovation community where people come together to learn, share knowledge, collaborate, and turn ideas into real-world projects.</p><p>Whether you’re taking your first step into coding or already building advanced projects, HACKORA gives you a space to explore, experiment, and grow.</p><a className="text-link" href="#features">Discover what’s inside <ArrowRight size={16} /></a></Reveal></div>
@@ -113,6 +146,6 @@ export default function Home() {
 
     <section className="final-cta section-wrap"><Reveal className="final-cta-inner"><div className="cta-orbit" aria-hidden="true"><div /><div /><div /><span>H</span></div><span className="cta-kicker"><span className="pill-pulse" /> YOUR NEXT CHAPTER STARTS HERE</span><h2>The Future Is<br /><em>Built Together.</em></h2><p>Bring your curiosity. Share your ideas. Find your people. Let’s build something meaningful.</p><a className="button button-primary button-large" href={JOIN} target="_blank" rel="noreferrer">Join HACKORA Community <ArrowRight size={18} /></a><span className="cta-footnote">NO GATEKEEPING. JUST GOOD PEOPLE AND BIG IDEAS.</span></Reveal></section>
 
-    <footer className="footer section-wrap"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="#home"><span className="wordmark-symbol">H</span><span>HACKORA</span><span className="wordmark-period">.</span></a><p>We Build the Future,<br />From Localhost to the Universe.</p></div><div className="footer-nav"><span className="footer-label">EXPLORE</span>{navItems.map(item => <a key={item.label} href={item.href}>{item.label}</a>)}</div><div className="footer-nav footer-community"><span className="footer-label">BE PART OF IT</span><a href={JOIN} target="_blank" rel="noreferrer">Join the community <ArrowUpRight size={14} /></a><span className="footer-note">Curiosity is the only prerequisite.</span></div><div className="footer-mark" aria-hidden="true">H<span>↗</span></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} HACKORA. ALL RIGHTS RESERVED.</span><span>BUILT FOR THE CURIOUS <span className="footer-dot">●</span></span><a href="#home">BACK TO TOP ↑</a></div></footer>
+    <footer className="footer section-wrap"><div className="footer-main"><div className="footer-brand"><a className="wordmark" href="#home"><span className="wordmark-symbol">H</span><span>HACKORA</span><span className="wordmark-period">.</span></a><p>We Build the Future,<br />From Localhost to the Universe.</p></div><div className="footer-nav"><span className="footer-label">EXPLORE</span>{navItems.map(item => <a key={item.label} href={item.href}>{item.label}</a>)}</div><div className="footer-nav footer-community"><span className="footer-label">BE PART OF IT</span><a href={JOIN} target="_blank" rel="noreferrer">Join the community <ArrowUpRight size={14} /></a><a href={INSTAGRAM} target="_blank" rel="noreferrer">Follow on Instagram <Instagram size={14} /></a><span className="footer-note">Curiosity is the only prerequisite.</span></div><div className="footer-mark" aria-hidden="true">H<span>↗</span></div></div><div className="footer-bottom"><span>© {new Date().getFullYear()} HACKORA. ALL RIGHTS RESERVED.</span><span>BUILT FOR THE CURIOUS <span className="footer-dot">●</span></span><a href="#home">BACK TO TOP ↑</a></div></footer>
   </main>;
 }
